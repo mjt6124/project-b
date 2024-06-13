@@ -32,7 +32,7 @@ public class Table {
 
     private void resetRound(){
         while(communityCards.size() > 0){
-            discard.addCard(this.communityCards.removeFirst());
+            discard.addCard(this.communityCards.remove(0));
         }
         for (Player player : this.players) {
                 this.discard.addCards(player.discardHand());
@@ -82,7 +82,7 @@ public class Table {
     }
 
     public void addPlayer(Player player){
-        this.players.addLast(player);
+        this.players.add(player);
     }
 
     public void addPlayers(String[] players){

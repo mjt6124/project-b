@@ -44,7 +44,7 @@ public class Deck {
     public Deck(){
         cards = new ArrayList<Card>();
         for (Suit suit: freshTopHalfSuitOrder) {
-            for (Rank rank : freshRankOrder.reversed()) {
+            for (Rank rank : reverse(freshRankOrder)) {
                 cards.add(new Card(rank, suit));
             }
         }
@@ -60,11 +60,11 @@ public class Deck {
     }
 
     public Card draw(){
-        return this.cards.removeFirst();
+        return this.cards.remove(0);
     }
 
     public void addCard(Card card){
-        this.cards.addFirst(card);
+        this.cards.add(0, card);
     }
 
     public void addCards(ArrayList<Card> cards){
@@ -98,4 +98,11 @@ public class Deck {
         return string;
     }
 
+    public static <E> ArrayList<E> reverse(ArrayList<E> arrayList){
+        ArrayList<E> newArrayList = new ArrayList<E>();
+        for(int i = arrayList.size() - 1 ; i >= 0 ; i-- ) {
+            newArrayList.add(arrayList.get(i));
+        }
+        return newArrayList;
+    }
 }
